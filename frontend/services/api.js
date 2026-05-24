@@ -1,5 +1,5 @@
 const BASE_URL =
-  "http://localhost:8081/api";
+"https://lead-management-backend-7djc.onrender.com/api";
 
 export async function getProviders() {
 
