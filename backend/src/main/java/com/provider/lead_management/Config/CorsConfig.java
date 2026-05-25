@@ -13,7 +13,7 @@ public class CorsConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
 
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:3000","https://lead-management-system-5g0aj0r1r-shrinidhichellamcs-projects.vercel.app")
+                .allowedOrigins("*")
                 .allowedMethods("*")
                 .allowedHeaders("*");
     }
