@@ -20,8 +20,12 @@ public class TestController {
         long timestamp =
                 System.currentTimeMillis();
 
+        int successCount = 0;
+
         for (int i = 1; i <= 10; i++) {
+
             try {
+
                 CreateLeadRequest request =
                         new CreateLeadRequest();
 
@@ -54,13 +58,19 @@ public class TestController {
                 );
 
                 leadService.createLead(request);
-            }
-            catch(RuntimeException e){
-                System.out.println("skipping lead: "+ e.getMessage());
+
+                successCount++;
+
+            } catch (RuntimeException e) {
+
+                System.out.println(
+                        "Skipping lead: "
+                                + e.getMessage()
+                );
             }
         }
 
-
-        return "10 leads generated successfully";
+        return successCount
+                + " leads generated successfully";
     }
 }
