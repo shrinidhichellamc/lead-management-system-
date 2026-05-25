@@ -34,16 +34,7 @@ public class LeadService {
                 .description(request.getDescription())
                 .build();
 
-        try {
-
-            allocationService.assignLead(lead);
-
-        } catch (RuntimeException e) {
-
-            throw new RuntimeException(
-                    "Provider quota maxed out"
-            );
-        }
+        allocationService.assignLead(lead);
 
         return leadRepo.save(lead);
     }

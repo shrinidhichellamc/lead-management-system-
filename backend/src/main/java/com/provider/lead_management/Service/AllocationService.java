@@ -5,7 +5,7 @@ import com.provider.lead_management.Model.AllocationState;
 import com.provider.lead_management.Model.Lead;
 import com.provider.lead_management.Model.Provider;
 import com.provider.lead_management.Repository.AllocationStateRepo;
-import com.provider.lead_management.Repository.LeadRepo;
+
 import com.provider.lead_management.Repository.ProviderRepo;
 
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AllocationService {
 
-    private final LeadRepo leadRepo;
+
 
     private final ProviderRepo providerRepository;
 
@@ -183,7 +183,7 @@ public class AllocationService {
                 providerCodes
         );
 
-        leadRepo.save(lead);
+
 
         return assignedProviders;
     }

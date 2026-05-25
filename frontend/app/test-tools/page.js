@@ -1,12 +1,7 @@
 "use client";
+
 import Link from "next/link";
 import { useState } from "react";
-
-import {
-
-  generateLeads
-
-} from "../../services/api";
 
 export default function TestTools() {
 
@@ -16,11 +11,14 @@ export default function TestTools() {
   const [eventId, setEventId] =
     useState("PAYMENT_001");
 
+    const API_URL =
+    "https://lead-management-backend-7djc.onrender.com";
+
   async function handleGenerateLeads() {
 
     const response = await fetch(
 
-      "http://localhost:8081/api/test/generate-leads",
+      `${API_URL}/api/test/generate-leads`,
 
       {
         method: "POST"
@@ -37,7 +35,7 @@ export default function TestTools() {
 
     const response = await fetch(
 
-      "http://localhost:8081/api/webhooks/payment-success",
+      `${API_URL}/api/webhooks/payment-success`,
 
       {
         method: "POST",
@@ -67,7 +65,7 @@ export default function TestTools() {
 
       await fetch(
 
-        "http://localhost:8081/api/webhooks/payment-success",
+        `${API_URL}/api/webhooks/payment-success`,
 
         {
           method: "POST",
@@ -94,6 +92,25 @@ export default function TestTools() {
   return (
 
     <div className="p-10">
+
+      <Link href="/dashboard">
+
+        <button
+          className="
+            bg-black
+            text-white
+            px-6
+            py-3
+            rounded-xl
+            mb-8
+          "
+        >
+
+          Back to Dashboard
+
+        </button>
+
+      </Link>
 
       <h1 className="
         text-4xl
@@ -199,25 +216,6 @@ export default function TestTools() {
           Generate 10 Leads
 
         </button>
-
-        <Link href="/dashboard">
-
-  <button
-    className="
-      bg-black
-      text-white
-      px-6
-      py-3
-      rounded-xl
-      mb-8
-    "
-  >
-
-    Back to Dashboard
-
-  </button>
-
-</Link>
 
       </div>
     </div>
