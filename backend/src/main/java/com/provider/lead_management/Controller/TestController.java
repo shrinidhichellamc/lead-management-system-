@@ -21,40 +21,45 @@ public class TestController {
                 System.currentTimeMillis();
 
         for (int i = 1; i <= 10; i++) {
+            try {
+                CreateLeadRequest request =
+                        new CreateLeadRequest();
 
-            CreateLeadRequest request =
-                    new CreateLeadRequest();
+                request.setName(
+                        "Test User " + timestamp + i
+                );
 
-            request.setName(
-                    "Test User " + timestamp + i
-            );
+                request.setPhone(
+                        "9" + (timestamp + i)
+                );
 
-            request.setPhone(
-                    "9" + (timestamp + i)
-            );
+                request.setCity(
+                        "Chennai"
+                );
 
-            request.setCity(
-                    "Chennai"
-            );
+                request.setServiceType(
 
-            request.setServiceType(
+                        switch (i % 3) {
 
-                    switch (i % 3) {
+                            case 0 -> "Service 1";
 
-                        case 0 -> "Service 1";
+                            case 1 -> "Service 2";
 
-                        case 1 -> "Service 2";
+                            default -> "Service 3";
+                        }
+                );
 
-                        default -> "Service 3";
-                    }
-            );
+                request.setDescription(
+                        "Auto generated lead"
+                );
 
-            request.setDescription(
-                    "Auto generated lead"
-            );
-
-            leadService.createLead(request);
+                leadService.createLead(request);
+            }
+            catch(RuntimeException e){
+                System.out.println("skipping lead: "+ e.getMessage());
+            }
         }
+
 
         return "10 leads generated successfully";
     }
